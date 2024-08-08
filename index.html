@@ -118,5 +118,14 @@
       document.body.appendChild(script);
 
     </script>
+    <script>
+        function triggerVibration(duration) {
+            if ("vibrate" in navigator) {
+                navigator.vibrate(duration);
+            } else {
+                console.log("Vibration API not supported by this browser.");
+            }
+        }
+    </script>
   </body>
 </html>
