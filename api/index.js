@@ -7,6 +7,8 @@ const bot = new TelegramBot(TOKEN, {
     polling: true
 });
 
+bot.setWebHook(`https://clicker-harvest-noko.vercel.app/api/bot`);
+
 const gameName = "clickerharvest";
 const queries = {};
 
