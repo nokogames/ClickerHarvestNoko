@@ -37,6 +37,8 @@ jobs:
           node-version: '16'
       - name: Install dependencies
         run: npm install
+      - name: Set up environment variables
+        run: echo "TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}" >> $GITHUB_ENV
       - name: Build project
         run: npm start
       - name: Setup Pages
