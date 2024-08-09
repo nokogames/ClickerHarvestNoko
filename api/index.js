@@ -15,14 +15,19 @@ bot.onText(/start|game/, (msg) => bot.sendGame(msg.from.id, gameName));
 
 bot.on("callback_query", function (query) {
     if (query.game_short_name !== gameName) {
-        bot.answerCallbackQuery(query.id, "Sorry, '" + query.game_short_name + "' is not available.");
+        bot.answerCallbackQuery(query.id, "Sorry, '" + query.game_short_name + "' is not available.")
+            .catch((error) => {
+                console.error("Error responding to callback query:", error);
+            });
     } else {
         queries[query.id] = query;
         let gameurl = process.env.GAME_URL;
+
         bot.answerCallbackQuery(query.id, {
             url: gameurl
         }).catch((error) => {
             console.error("Error responding to callback query:", error);
+            // Handle specific errors here if needed
         });
     }
 });
