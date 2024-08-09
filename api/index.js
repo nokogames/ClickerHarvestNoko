@@ -21,7 +21,7 @@ bot.on("callback_query", function (query) {
             });
     } else {
         queries[query.id] = query;
-        let gameurl = "https://clicker-harvest-noko.vercel.app/";
+        let gameurl = process.env.GAME_URL;
 
         bot.answerCallbackQuery(query.id, {
             url: gameurl
